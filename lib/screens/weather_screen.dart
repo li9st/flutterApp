@@ -25,14 +25,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
             decoration:InputDecoration(
               hintText: 'Enter a city',
               suffixIcon: IconButton(
-                icon:Icon(Icons.search),
-                onPressed: getData,
-              )
-            ),
-          ))
-        ],
-      )),
-    );
+                icon:Icon(Icons.search),onPressed: getData)))),
+          weatherRow('Place:', result.name),
+          weatherRow('Description:', result.description),
+          weatherRow('Temperature:', result.temperature.toStringAsFixed(2)),
+          weatherRow('Perceived:', result.perceived.toStringAsFixed(2)),
+          weatherRow('Pressure:', result.pressure.toString()),
+          weatherRow('Humidity:', result.humidity.toString()),
+        ]),
+      ));
   }
 Future getData() async{
     HttpHelper helper = HttpHelper();
